@@ -18,12 +18,12 @@ workflows:
       - name: Build APK with Flutter
         script: |
           flutter build apk --debug
-      - name: Create debug and test APK
+            - name: Create debug and test APK
         script: 
           set -ex
           cd android
-          ./gradlow app: assembleAndroidTest
-          ./gradlow app: assembleDebug -Ptarget="$CM_BUILD_DIR/integration_test/app_test.dart"
+          ./gradlew app:assembleAndroidTest
+          ./gradlew app:assembleDebug -Ptarget="$CM_BUILD_DIR/integration_test/app_test.dart"
       - name: Run Firebase Test Lab Tests
         script:
           set -ex
