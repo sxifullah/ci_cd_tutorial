@@ -24,13 +24,6 @@ workflows:
           cd android
           ./gradlew app:assembleAndroidTest
           ./gradlew app:assembleDebug -Ptarget="$CM_BUILD_DIR/integration_test/app_test.dart"
-      - name: Debug: Print GCLOUD_KEY_FILE length
-        script: |
-          echo "Length of GCLOUD_KEY_FILE: ${#GCLOUD_KEY_FILE}"
-          if [ -z "$GCLOUD_KEY_FILE" ]; then
-            echo "Error: GCLOUD_KEY_FILE is not set or is empty"
-            exit 1
-          fi
       - name: Run Firebase Test Lab Tests
         script: |
           set -ex
