@@ -13,10 +13,10 @@ void main() {
 
       // Verify we are on the DashboardPage
       expect(
-          find.byWidgetPredicate((widget) =>
-              widget is Container &&
-              widget.child is Text &&
-              (widget.child as Text).data == '1549.7kW'),
+          find.descendant(
+            of: find.byType(Container),
+            matching: find.text('1549.7kW'),
+          ),
           findsOneWidget);
 
       // Navigate to Engineer Page
@@ -28,9 +28,12 @@ void main() {
 
       // Verify we are on the EngineerPage
       expect(
-          find.byWidgetPredicate(
-              (widget) => widget is Text && widget.data == 'John Doe'),
-          findsOneWidget);
+        find.descendant(
+          of: find.byType(Container),
+          matching: find.text('John Doe'),
+        ),
+        findsOneWidget,
+      );
 
       // Navigate to Notification Page
       await tester.tap(find.byWidgetPredicate((widget) =>
@@ -42,10 +45,10 @@ void main() {
 
       // Verify we are on the NotificationPage
       expect(
-          find.byWidgetPredicate((widget) =>
-              widget is Container &&
-              widget.child is Text &&
-              (widget.child as Text).data == 'Minimum Threshold'),
+          find.descendant(
+            of: find.byType(Container),
+            matching: find.text('Minimum Threshold'),
+          ),
           findsOneWidget);
 
       // Select Factory 2
@@ -64,10 +67,10 @@ void main() {
 
       // Verify we are on the DashboardPage
       expect(
-          find.byWidgetPredicate((widget) =>
-              widget is Container &&
-              widget.child is Text &&
-              (widget.child as Text).data == '1549.7kW'),
+          find.descendant(
+            of: find.byType(Container),
+            matching: find.text('1549.7kW'),
+          ),
           findsOneWidget);
     });
   });
