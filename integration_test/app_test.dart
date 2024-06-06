@@ -14,15 +14,22 @@ void main() {
       // Verify we are on the DashboardPage
       expect(find.text('1549.7kW'), findsOneWidget);
 
-      // Navigate to Engineer Page
-      await tester.tap(find.byIcon(Icons.user));
+// Navigate to Engineer Page
+      await tester.tap(find.byWidgetPredicate((widget) =>
+          widget is Image &&
+          widget.image is AssetImage &&
+          (widget.image as AssetImage).assetName == 'images/user_icon.png'));
       await tester.pumpAndSettle();
 
       // Verify we are on the EngineerPage
       expect(find.text('John Doe'), findsOneWidget);
 
       // Navigate to Notification Page
-      await tester.tap(find.byIcon(Icons.settings));
+      await tester.tap(find.byWidgetPredicate((widget) =>
+          widget is Image &&
+          widget.image is AssetImage &&
+          (widget.image as AssetImage).assetName ==
+              'images/settings_icon.png'));
       await tester.pumpAndSettle();
 
       // Verify we are on the NotificationPage
@@ -36,7 +43,10 @@ void main() {
       expect(find.text('Factory 2'), findsOneWidget);
 
       // Navigate back to Dashboard Page
-      await tester.tap(find.byIcon(Icons.home));
+      await tester.tap(find.byWidgetPredicate((widget) =>
+          widget is Image &&
+          widget.image is AssetImage &&
+          (widget.image as AssetImage).assetName == 'images/home_icon.png'));
       await tester.pumpAndSettle();
 
       // Verify we are back on the DashboardPage
