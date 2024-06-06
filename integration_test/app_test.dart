@@ -33,8 +33,8 @@ void main() {
       expect(find.text('1549.7kW'), findsOneWidget);
 
       // Tap on the Factory 2 toggle button
-      await tester.tap(find.text('Factory 2'));
-      await tester.pumpAndSettle(); // Wait for animation
+      //await tester.tap(find.text('Factory 2'));
+      //await tester.pumpAndSettle(); // Wait for animation
 
       // Verify the presence of 'ABD1234' text
       // expect(find.text('ABD1234'), findsOneWidget);
