@@ -14,7 +14,7 @@ void main() {
       // Verify we are on the DashboardPage
       expect(find.text('1549.7kW'), findsOneWidget);
 
-// Navigate to Engineer Page
+      // Navigate to Engineer Page
       await tester.tap(find.byWidgetPredicate((widget) =>
           widget is Image &&
           widget.image is AssetImage &&
@@ -22,7 +22,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify we are on the EngineerPage
-      expect(find.text('John Doe'), findsOneWidget);
+      expect(find.text('Owner\'s Name'), findsOneWidget);
 
       // Navigate to Notification Page
       await tester.tap(find.byWidgetPredicate((widget) =>
