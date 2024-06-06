@@ -23,8 +23,21 @@ void main() {
       await tester.pumpAndSettle(); // Wait for navigation
 
       // Verify we are now on the OTP page
-      expect(find.text('Enter the activation code you received via SMS.'),
-          findsOneWidget);
+      expect(find.text('Enter OTP'), findsOneWidget);
+
+      // Tap on the activate button
+      await tester.tap(find.text('Activate'));
+      await tester.pumpAndSettle(); // Wait for navigation
+
+      // Verify we are now on the Dashboard page
+      expect(find.text('1549.7kW'), findsOneWidget);
+
+      // Tap on the Factory 2 toggle button
+      await tester.tap(find.text('Factory 2'));
+      await tester.pumpAndSettle(); // Wait for animation
+
+      // Verify the presence of 'ABD1234' text
+      expect(find.text('ABD1234'), findsOneWidget);
     });
   });
 }
