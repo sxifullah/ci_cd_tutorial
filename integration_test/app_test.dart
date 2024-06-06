@@ -12,14 +12,14 @@ void main() {
       await tester.pumpWidget(MyApp());
 
       // Verify we are on the DashboardPage
-      expect(find.text('Dashboard Page'), findsOneWidget);
+      expect(find.text('1549.7kW'), findsOneWidget);
 
       // Navigate to Engineer Page
-      await tester.tap(find.byIcon(Icons.person));
+      await tester.tap(find.byIcon(Icons.user));
       await tester.pumpAndSettle();
 
       // Verify we are on the EngineerPage
-      expect(find.text('Engineer Page'), findsOneWidget);
+      expect(find.text('John Doe'), findsOneWidget);
 
       // Navigate to Notification Page
       await tester.tap(find.byIcon(Icons.settings));
@@ -40,7 +40,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify we are back on the DashboardPage
-      expect(find.text('Dashboard Page'), findsOneWidget);
+      expect(find.text('1549.7kW'), findsOneWidget);
     });
   });
 }
