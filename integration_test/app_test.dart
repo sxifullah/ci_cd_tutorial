@@ -12,7 +12,12 @@ void main() {
       await tester.pumpWidget(MyApp());
 
       // Verify we are on the DashboardPage
-      expect(find.text('1549.7kW'), findsOneWidget);
+      expect(
+          find.byWidgetPredicate((widget) =>
+              widget is Container &&
+              widget.child is Text &&
+              (widget.child as Text).data == '1549.7kW'),
+          findsOneWidget);
 
       // Navigate to Engineer Page
       await tester.tap(find.byWidgetPredicate((widget) =>
@@ -22,7 +27,10 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify we are on the EngineerPage
-      expect(find.text('Owner\'s Name'), findsOneWidget);
+      expect(
+          find.byWidgetPredicate(
+              (widget) => widget is Text && widget.data == 'John Doe'),
+          findsOneWidget);
 
       // Navigate to Notification Page
       await tester.tap(find.byWidgetPredicate((widget) =>
@@ -33,7 +41,12 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify we are on the NotificationPage
-      expect(find.text('Minimum Threshold'), findsOneWidget);
+      expect(
+          find.byWidgetPredicate((widget) =>
+              widget is Container &&
+              widget.child is Text &&
+              (widget.child as Text).data == 'Minimum Threshold'),
+          findsOneWidget);
 
       // Select Factory 2
       await tester.tap(find.text('Factory 2'));
@@ -49,8 +62,13 @@ void main() {
           (widget.image as AssetImage).assetName == 'images/home_icon.png'));
       await tester.pumpAndSettle();
 
-      // Verify we are back on the DashboardPage
-      expect(find.text('1549.7kW'), findsOneWidget);
+      // Verify we are on the DashboardPage
+      expect(
+          find.byWidgetPredicate((widget) =>
+              widget is Container &&
+              widget.child is Text &&
+              (widget.child as Text).data == '1549.7kW'),
+          findsOneWidget);
     });
   });
 }
