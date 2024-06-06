@@ -27,16 +27,11 @@ workflows:
       - name: Run Firebase Test Lab Tests
         script: |
           set -ex
-          echo $GCLOUD_KEY_FILE | base64 --decode > ./gcloud_key_file.json
-          cat ./gcloud_key_file.json
+          echo ${GCLOUD_KEY_FILE?} > ./gcloud_key_file.json
           gcloud auth activate-service-account --key-file=gcloud_key_file.json
           gcloud --quiet config set project $FIREBASE_PROJECT
 
-          gcloud firebase test android run \
-            --type instrumentation \
-            --app build/outputs/apk/debug/app-debug.apk \
-            --test build/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
-            --timeout 3m
+      - gcloud firebase test android run --type instrumentation --app ./build/app/outputs/apk/debug/app-debug.apk --test build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk
     artifacts:
       - build/**/outputs/**/*.apk
       - build/**/outputs/**/*.aab
