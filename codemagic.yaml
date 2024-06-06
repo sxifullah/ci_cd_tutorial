@@ -41,7 +41,7 @@ workflows:
             --test build/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
             --timeout 3m
     artifacts:
-          - build/**/outputs/**/*.apk
-          - build/**/outputs/**/*.aab
-          - build/**/outputs/**/mapping.txt
-          - flutter_drive.log
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
