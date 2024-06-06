@@ -36,7 +36,6 @@ workflows:
             --test build/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
             --timeout 3m
     artifacts:
-      files:
         - build/**/outputs/**/*.apk
         - build/**/outputs/**/*.aab
         - build/**/outputs/**/mapping.txt
